@@ -4,8 +4,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                // venv
+                sh 'python3 -m venv venv'
+                sh 'source venv/bin/activate'
                 // Install dependencies
-                sh 'pip3 install -r requirements.txt'
+                sh 'python3 -m pip install -r requirements.txt'
             }
         }
         stage('Test') {
